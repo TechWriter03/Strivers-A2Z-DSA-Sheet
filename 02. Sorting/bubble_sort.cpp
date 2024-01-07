@@ -2,18 +2,25 @@
 using namespace std;
 void bubbleSort(vector<int>&arr) 
 {
-    int n=arr.size();
+    int n=arr.size(),didSwap;
     for(int i=0;i<n-1;i++)
     {
-        for(int j=i+1;j<n;j++)
+        didSwap=0;
+        for(int j=i;j<n-1;j++)
         {
-            if(arr[j]<arr[i])
-                swap(arr[i],arr[j]);
+            if(arr[j+1]<arr[j])
+            {
+                swap(arr[j],arr[j+1]);
+                didSwap=1;
+            }
         }
+        if(didSwap==0)
+            break;
     }
 }
 
-int main() {
+int main() 
+{
     int n;
     cin>>n;
     vector<int>v;
