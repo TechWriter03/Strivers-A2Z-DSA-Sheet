@@ -29,7 +29,6 @@ void merge(int a[],int low,int mid,int high)
     }
     for(int i=low;i<=high;i++)
         a[i]=temp[i-low];
-
 }
 
 void mergeSort(int arr[], int low, int high) 
