@@ -1,19 +1,40 @@
-class Solution {
-public:
-    int numOfSubarrays(vector<int>& arr, int k, int threshold) {
-        int n=arr.size(),c=0,l=n-k;
-        int i=0,j=k-1;
-        long sum=0;
-        for(int x=i;x<=j;x++) sum+=arr[x];
-        if(sum/k>=threshold) c++;
-        while(i<=l && j<n-1)
+// Input: 
+// m = 3
+// nums1 = [1,2,3,0,0,0]
+// n = 3
+// nums2 = [2,5,6]
+// Output: 
+// [1,2,2,3,5,6]
+// Explanation: 
+// The arrays we are merging are [1,2,3] and [2,5,6].
+// The result of the merge is [1,2,2,3,5,6] with the underlined elements coming from nums1.
+
+void swapping(vector<int>& a,vector<int>& b,int x,int y)
+{
+    if(a[x]>b[y])
+        swap(a[x],b[y]);
+}
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) 
+{
+    int len=m+n,gap=(len/2)+(len%2);
+    while(gap>0)
+    {
+        int left=0,right=left+gap;
+        while(right<len)
         {
-            j++;
-            sum+=arr[j];
-            sum-=arr[i];
-            i++;
-            if(sum/k>=threshold) c++;
+            if(left<m && right<m)
+                swapping(nums1,nums1,left,right);
+            else if(left>=m)
+                swapping(nums2,nums2,left-m,right-m);
+            else
+                swapping(nums1,nums2,left,right-m);
+            left++;
+            right++;
         }
-        return c;
+        if(gap==1)
+            break;
+        gap=(gap/2)+(gap%2);
     }
-};
+    for(int i=0;i<n;i++)
+        nums1[i+m]=nums2[i];
+}
