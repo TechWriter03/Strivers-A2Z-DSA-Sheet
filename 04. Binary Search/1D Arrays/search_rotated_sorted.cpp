@@ -1,18 +1,39 @@
 // Input: 
-// nums = [1,2,2,4]
+// nums = [4,5,6,7,0,1,2]
+// target = 0
 // Output: 
-// [2,3]
+// 4
 
-vector<int> findErrorNums(vector<int>& a) 
+int binsearch(vector<int>& a,int low,int high,int t) 
 {
-      long n=a.size();
-      long Sn=(n*(n+1))/2,S2n=(n*(n+1)*(2*n+1))/6,s1=0,s2=0;
-      for(auto it:a)
-      {
-          s1+=it;
-          s2+=it*it;
-      }   
-      long val1=s1-Sn,val2=s2-S2n;
-      int x=(val1+(val2/val1))/2,y=x-val1;
-      return {x,y};
-  }
+    while(low<=high)
+    {
+        int mid=(low+high)/2;
+        if(a[mid]==t) 
+            return mid;
+        else if(a[low]<a[mid])
+        {
+            if(a[low]<=t && t<=a[mid])
+                high=mid-1;
+            else
+                low=mid+1; 
+        }
+        else if(a[mid]<a[high])
+        {
+            if(a[mid]<=t && t<=a[high])
+                low=mid+1; 
+            else
+                high=mid-1;
+        }
+        else if(a[mid]<t)
+            high=mid-1;
+        else
+            low=mid+1; 
+    }
+    return -1;
+}
+int search(vector<int>& nums, int target) 
+{
+    int n=nums.size();
+    return binsearch(nums,0,n-1,target);
+}
