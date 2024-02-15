@@ -25,8 +25,8 @@ int minEatingSpeed(vector<int>& piles, int h)
     {
         mid=(low+high)/2;
         hrs=countHours(piles,mid);
-        if(hrs>h) low=mid+1;
-        else if(hrs<=h) high=mid-1;
+        if(hrs<=h) high=mid-1;
+        else low=mid+1;
     }
     return low;
 }
