@@ -11,10 +11,8 @@
 int adjacent(vector<int>& colours,bool graph[101][101],int node,int colour,int n)
 {
     for(int i=0;i<n;i++)
-    {
         if(graph[node][i])           if(colour==colours[i])
-                return 1;
-    }
+            return 1;
     return 0;
 }
 int assign(int node,vector<int>& colours,bool graph[101][101],int n,int m)
