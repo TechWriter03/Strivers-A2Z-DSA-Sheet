@@ -12,7 +12,7 @@ int adjacent(vector<int>& colours,bool graph[101][101],int node,int colour,int n
 {
     for(int i=0;i<n;i++)
     {
-        if(graph[node][i])// || graph[i][node])
+        if(graph[node][i]) || graph[i][node])
             if(colour==colours[i])
                 return 1;
     }
