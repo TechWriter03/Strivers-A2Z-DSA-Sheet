@@ -1,5 +1,3 @@
-//check
-
 class Tab
 {
 public:
