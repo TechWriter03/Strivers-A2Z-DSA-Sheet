@@ -8,7 +8,7 @@
 //  / \    / \
 // 2   3  2   3
 
-bool isSameTree(TreeNode* p, TreeNode* q)
+bool isSameTree(TreeNode* p,TreeNode* q)
 {
     if(p==NULL || q==NULL)
         return p==q;
