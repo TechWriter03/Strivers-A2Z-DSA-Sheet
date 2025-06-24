@@ -4,7 +4,7 @@
 // Output:
 // [2,1,3]
 
-TreeNode* searchBST(TreeNode* root, int val)
+TreeNode* searchBST(TreeNode* root,int val)
 {
     while(root && root->val!=val)
     {
