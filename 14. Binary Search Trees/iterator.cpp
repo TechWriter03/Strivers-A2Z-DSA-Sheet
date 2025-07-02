@@ -27,7 +27,7 @@ public:
 
     void pushAllLeft(TreeNode* node)
     {
-        while(node->left)
+        while(node)
         {
             inorder.push(node);
             node=node->left;
@@ -38,8 +38,7 @@ public:
     {
         TreeNode* node=inorder.top();
         inorder.pop();
-        if(node->right)
-            pushAllLeft(node->right);
+        pushAllLeft(node->right);
         return node->val;
     }
     
