@@ -45,6 +45,6 @@ public:
     
     bool hasNext()
     {
-        return inorder.empty();
+        return !inorder.empty();
     }
 };
