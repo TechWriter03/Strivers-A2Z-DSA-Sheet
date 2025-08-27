@@ -1,0 +1,10 @@
+1. BFS
+2. DFS
+3. Topological Sort
+- Directed Acyclic Graph.
+- if u -> v, then u should appear before v.
+- DFS: push nodes into stack while backtrack. pop all nodes and return.
+4. Kahn's Algorithm (Topo Sort using BFS)
+- find indegree of all nodes.
+- push node with indegree 0 into queue.
+- reduce indegree of adjacent nodes. If indegree becomes 0 push into queue.
