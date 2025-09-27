@@ -8,3 +8,8 @@
 - find indegree of all nodes.
 - push node with indegree 0 into queue.
 - reduce indegree of adjacent nodes. If indegree becomes 0 push into queue.
+5. Dijkstra's Algorithm
+- does not work for negative weight cycle.
+- single source shortest path.
+- can be solved using priority queue (min heap), set, queue.
+- time complexity E log V.
