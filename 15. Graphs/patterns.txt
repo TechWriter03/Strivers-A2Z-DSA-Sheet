@@ -1,15 +1,23 @@
 1. BFS
 2. DFS
 3. Topological Sort
-- Directed Acyclic Graph.
-- if u -> v, then u should appear before v.
-- DFS: push nodes into stack while backtrack. pop all nodes and return.
+  - Directed Acyclic Graph.
+  - if u -> v, then u should appear before v.
+  - DFS: push nodes into stack while backtrack. pop all nodes and return.
 4. Kahn's Algorithm (Topo Sort using BFS)
-- find indegree of all nodes.
-- push node with indegree 0 into queue.
-- reduce indegree of adjacent nodes. If indegree becomes 0 push into queue.
+  - find indegree of all nodes.
+  - push node with indegree 0 into queue.
+  - reduce indegree of adjacent nodes. If indegree becomes 0 push into queue.
 5. Dijkstra's Algorithm
-- does not work for negative weight cycle.
-- single source shortest path.
-- can be solved using priority queue (min heap), set, queue.
-- time complexity E log V.
+  - does not work for negative weight cycle.
+  - single source shortest path.
+  - can be solved using priority queue (min heap), set, queue.
+  - time complexity E log V.
+6. Bellman Ford Algorithm
+  - helps to detect negative weight cycle (if relax happens at Nth iteration).
+  - relax (dist[u]+wt<dist[v]) every edge N-1 times.
+  - time complexity V * E.
+7. Floyd Warshall Algorithm
+  - multi source shortest path.
+  - Go via every node (dist[i][j]=dist[i][k]+dist[k][j]).
+  - time complexity N^3.
