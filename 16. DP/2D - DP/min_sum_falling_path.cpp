@@ -82,3 +82,35 @@ int minFallingPathSum(vector<vector<int>>& grid)
     }
     return minSum;
 }
+
+// Space Optimization
+int minFallingPathSum(vector<vector<int>>& grid)
+{
+    int n=grid.size();
+    vector<int> next(n,0);
+    for(int i=n-1;i>=0;i--)
+    {
+        vector<int> curr(n,0);
+        for(int j=n-1;j>=0;j--)
+        {
+            if(i==n-1)
+            {
+                curr[j]=grid[i][j];
+            }
+            else
+            {
+                int down=next[j];
+                int leftDown=(j-1>=0)?next[j-1]:INT_MAX;
+                int rightDown=(j+1<n)?next[j+1]:INT_MAX;
+                curr[j]=grid[i][j]+min({down,leftDown,rightDown});
+            }
+        }
+        next=curr;
+    }
+    int minSum=INT_MAX;
+    for(int i=0;i<n;i++)
+    {
+        minSum=min(next[i],minSum);
+    }
+    return minSum;
+}
