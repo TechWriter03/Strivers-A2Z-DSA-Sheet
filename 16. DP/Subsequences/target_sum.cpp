@@ -62,3 +62,30 @@ int totalWays(vector<int>& arr,int target)
     vector<vector<int>> dp(n+1,vector<int>(total+1,-1));
     return countWays(0,0,n,total,target,arr,dp);
 }
+
+// Tabulation
+int totalWays(vector<int>& arr,int target)
+{
+    int n=arr.size(),total=0;
+    for(int i=0;i<n;i++)
+    {
+        total+=arr[i];
+    }
+    if((total-target)<0 || (total-target)%2==1)
+        return 0;
+    int k=(total-target)/2;
+    vector<vector<int>> dp(n+1,vector<int>(k+1,0));
+    dp[n][k]=1;
+    for(int i=n-1;i>=0;i--)
+    {
+        for(int j=k;j>=0;j--)
+        {
+            int notPick=dp[i+1][j];
+            int pick=0;
+            if(j+arr[i]<=k)
+                pick=dp[i+1][j+arr[i]];
+            dp[i][j]=pick+notPick;
+        }
+    }
+    return dp[0][0];
+}
