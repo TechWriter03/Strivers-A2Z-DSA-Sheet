@@ -89,3 +89,32 @@ int totalWays(vector<int>& arr,int target)
     }
     return dp[0][0];
 }
+
+// Space Optimization
+int totalWays(vector<int>& arr,int target)
+{
+    int n=arr.size(),total=0;
+    for(int i=0;i<n;i++)
+    {
+        total+=arr[i];
+    }
+    if((total-target)<0 || (total-target)%2==1)
+        return 0;
+    int k=(total-target)/2;
+    vector<int> next(k+1,0);
+    next[k]=1;
+    for(int i=n-1;i>=0;i--)
+    {
+        vector<int> curr(k+1,0);
+        for(int j=k;j>=0;j--)
+        {
+            int notPick=next[j];
+            int pick=0;
+            if(j+arr[i]<=k)
+                pick=next[j+arr[i]];
+            curr[j]=pick+notPick;
+        }
+        next=curr;
+    }
+    return next[0];
+}
