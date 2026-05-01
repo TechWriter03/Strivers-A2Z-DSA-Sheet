@@ -30,6 +30,8 @@ int countWays(int i,int j,int m,int n,string& s,string& t,vector<vector<int>>& d
         return 1;
     if(i>=m)
         return 0;
+    if(dp[i][j]!=-1)
+        return dp[i][j];
     if(s[i]==t[j])
         return dp[i][j]=countWays(i+1,j+1,m,n,s,t,dp)+countWays(i+1,j,m,n,s,t,dp);
     return dp[i][j]=countWays(i+1,j,m,n,s,t,dp);
